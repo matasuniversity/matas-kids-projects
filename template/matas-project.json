@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "replace-with-project-id",
+  "name": "Шаблон: назва проєкту",
+  "category": "Конструювання",
+  "description": "Замініть описом власного навчального проєкту. Це шаблон, не затверджена програма.",
+  "photo": "images/cover.svg",
+  "materialsCostUah": 0,
+  "skills": [],
+  "team": false,
+  "instructions": ["Замініть власними кроками виконання проєкту."]
+}
