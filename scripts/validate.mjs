@@ -28,13 +28,17 @@ const t = JSON.parse(
     "utf8",
   ),
 );
-assert.equal(t.schemaVersion, 1);
-assert.ok(
-  Number.isFinite(t.materialsCostUah) &&
-    t.materialsCostUah >= 0 &&
-    Math.abs(t.materialsCostUah * 100 - Math.round(t.materialsCostUah * 100)) <
-      0.000001,
+assert.equal(t.schemaVersion, 2);
+assert.equal(t.materialsCostUah, undefined);
+assert.ok(Array.isArray(t.electronics) && t.electronics.length <= 100);
+assert.equal(
+  new Set(t.electronics.map((r) => r.itemId)).size,
+  t.electronics.length,
 );
+for (const row of t.electronics) {
+  assert.ok(typeof row.itemId === "string" && row.itemId.trim());
+  assert.ok(Number.isSafeInteger(row.quantity) && row.quantity > 0);
+}
 assert.ok(Array.isArray(t.skills) && Array.isArray(t.instructions));
 assert.equal(typeof t.team, "boolean");
 assert.match(t.photo, /^[\w./-]+\.(png|jpe?g|webp|svg)$/i);
